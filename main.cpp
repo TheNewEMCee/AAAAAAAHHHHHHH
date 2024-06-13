@@ -21,15 +21,15 @@ void enterDetector() {
 int main() {
     //Confirm functioning build
     std::cout << "main.cpp runtime initialized" << std::endl;
-    //Try to see if CInt works... Hopefully!
-    std::string v = "hehy";
-    //CInt CInt1(v);
-    CTxt CTxt1("CTxt1",R"(P:\GitHub\AAAAAAAHHHHHHH\CInts.txt)");
+    CTxt CTxt1("CTxt1","P:\\GitHub\\AAAAAAAHHHHHHH\\ CInts.txt");
+    std::cout << CTxt1.isValidPath() << std::endl;
+    ///*
     CInt CInt1("CInt1", CTxt1, 2, 6, true);
     std::cout << "Hello!" << std::endl;
     std::cout << "Name: " << CInt1.getName() << std::endl;
     std::cout << "Stored at " << CInt1.getTxtFile().getPath() << ", line " << CInt1.getLineToReference() << std::endl;
     std::cout << "Value is set to " << CInt1.getValue() << std::endl;
+    std::cout << CInt1.getTxtFile().getPath() << std::endl;
     std::ifstream inFile;
     inFile.open(CInt1.getTxtFile().getPath());
     if (inFile.fail()) {
@@ -58,5 +58,7 @@ int main() {
     outFile.close();
     CInt1.updateValue();
     std::cout << "New value is: " << CInt1.getValue() << std::endl;
+    //*/
+
     return 0;
 }

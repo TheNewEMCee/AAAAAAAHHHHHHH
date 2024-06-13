@@ -11,7 +11,12 @@ public:
     CTxt();
     CTxt(const std::string &name, const std::string &path);
     ~CTxt();
-    void printFileContents(int start, int finish, int width = 32, bool isBeautified = true);
+    void printFile(int start, int finish, int width = 32, bool isBeautified = true);
+    void writeLine(std::string message, int lineToWrite);
+    std::string readLine(int lineToRead);
+    void printLine(int lineToPrint);
+    bool isValidPath();
+
     void updateNumLines();
     int getNumLines();
 };

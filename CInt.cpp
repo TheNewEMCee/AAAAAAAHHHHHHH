@@ -25,11 +25,13 @@ CInt::CInt(std::string name, CTxt txtFile, int lineToReference, int value, bool 
     this->setName(name);
     this->setTxtFile(txtFile);
     this->setLineToReference(lineToReference);
-    this->setValue(0);
+    this->setValue(0, false);
+    std::cout << this->getTxtFile().getPath() << std::endl;
     std::ifstream inFile(this->getTxtFile().getPath());
     if (inFile.fail()) {
         std::cerr << "In Thingy Failed in CInt constructor creation of " << name << "." << std::endl;
         std::cerr << "Error: " << strerror(errno) << std::endl;
+        inFile.close();
         return;
         //Hello
     }
@@ -43,7 +45,7 @@ CInt::CInt(std::string name, CTxt txtFile, int lineToReference, int value, bool 
         std::cout << "alijfkdnld" << std::endl;
     }
     inFile.close();
-    while (lineToReference >= lineArray.size() + 5) {
+    while (lineToReference >= lineArray.size()) {
         std::cerr << "Error: lineToReference is out of range." << std::endl << "Add lines? Y/N" << std::endl;
         std::string userInput;
         std::cin >> userInput;
@@ -145,6 +147,7 @@ CInt::~CInt() {
 }
 
 void CInt::updateValue() {
+    std::cout << "updateValue is trying to access " << this->getTxtFile().getPath() << std::endl;
     std::ifstream inFile(this->getTxtFile().getPath());
     if (inFile.fail()) {
         std::cerr << "In Thingy Failed in CInt::updateValue function of " << this->getName() << "." << std::endl;
@@ -212,7 +215,21 @@ void CInt::updateValue() {
     }
 }
 
-void CInt::setValue(int n) {
+
+void CInt::downloadValue() {
+
+}
+
+void CInt::uploadValue() {
+
+}
+
+
+
+
+
+
+void CInt::setValue(int n, bool updateValue) {
     this->value = n;
     std::ifstream inFile;
     inFile.open(this->getTxtFile().getPath());

@@ -15,8 +15,10 @@ public:
     CInt(std::string name, CTxt txtFile, int lineToReference, int value, bool getFromConst = true);
     ~CInt();
     void updateValue();
-    void setValue(int n);
-    int getValue(bool updateValue = true);
+    void downloadValue();
+    void uploadValue();
+    void setValue(int n, bool updateFile = true);
+    int getValue(bool updateValue = false);
     void setLineToReference(int line);
 };
 
